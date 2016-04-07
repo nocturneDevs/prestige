@@ -1,5 +1,5 @@
-var App = React.createClass({
-  displayName: 'App',
+var AppBackground = React.createClass({
+  displayName: 'AppBackground',
   render: function() {
     var style = {
       app: {
@@ -11,9 +11,20 @@ var App = React.createClass({
     }
     return (
       <div style={style.app}>
-        New tab
+        {this.props.children}
       </div>
     )
+  }
+});
+
+var App = React.createClass({
+  displayName: "App",
+  render: function() {
+    return (
+      <AppBackground>
+        <TimeDisplay />
+      </AppBackground>
+    );
   }
 });
 
