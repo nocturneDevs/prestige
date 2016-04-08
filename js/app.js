@@ -1,5 +1,5 @@
-var App = React.createClass({
-  displayName: 'App',
+var AppBackground = React.createClass({
+  displayName: 'AppBackground',
 
   getInitialState: function() {
     return {
@@ -46,7 +46,6 @@ var App = React.createClass({
 
     return canvas.toDataURL("image/png");
   },
-
   render: function() {
     var style = {
       app: {
@@ -58,9 +57,20 @@ var App = React.createClass({
     }
     return (
       React.createElement("div", {style: style.app}, 
-        "New tab"
+        this.props.children
       )
     )
+  }
+});
+
+var App = React.createClass({
+  displayName: "App",
+  render: function() {
+    return (
+      React.createElement(AppBackground, null, 
+        React.createElement(TimeDisplay, null)
+      )
+    );
   }
 });
 
