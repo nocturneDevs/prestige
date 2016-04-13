@@ -15,6 +15,7 @@ var AppBackground = React.createClass({
     localforage.getItem('prestige_background_image', function(err, val) {
       if (!err && val) {
         this.setState({ backgroundUrl: val });
+        this.fetchBackgroundImage();
       } else {
         this.fetchBackgroundImage();
       }
@@ -52,6 +53,7 @@ var AppBackground = React.createClass({
         width: '100%',
         height: '100%',
         backgroundSize: 'cover',
+        backgroundColor: "black",
         backgroundImage: 'url(' + this.state.backgroundUrl + ')',
         display: "flex",
         alignItems: "center",
