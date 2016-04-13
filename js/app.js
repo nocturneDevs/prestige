@@ -52,11 +52,33 @@ var AppBackground = React.createClass({
         width: '100%',
         height: '100%',
         backgroundSize: 'cover',
-        backgroundImage: 'url(' + this.state.backgroundUrl + ')'
+        backgroundImage: 'url(' + this.state.backgroundUrl + ')',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
       }
     }
     return (
-      React.createElement("div", {style: style.app}, 
+      React.createElement("div", {style: style.app},
+        this.props.children
+      )
+    )
+  }
+});
+
+var WidgetContainer = React.createClass({
+  displayName: "WidgetContainer",
+  render: function() {
+    var style = {
+      hero: {
+        fontSize: "3rem",
+        maxWidth: "100%",
+        padding: "2rem",
+        backgroundImage: "radial-gradient(closest-side at 50% 50% , rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%)"
+      }
+    }
+    return (
+      React.createElement("div", {style: style[this.props.position]},
         this.props.children
       )
     )
@@ -67,8 +89,10 @@ var App = React.createClass({
   displayName: "App",
   render: function() {
     return (
-      React.createElement(AppBackground, null, 
-        React.createElement(TimeDisplay, null)
+      React.createElement(AppBackground, null,
+        React.createElement(WidgetContainer, {position: "hero"},
+          React.createElement(TimeDisplay, null)
+        )
       )
     );
   }

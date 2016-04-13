@@ -12,8 +12,7 @@ var TimeDisplay = React.createClass({
   getDefaultProps: function() {
     return({
       width: "100%",
-      color: "white",
-      backgroundColor: "rgba(0,0,0,0.4)"
+      color: "white"
     });
   },
 
@@ -33,7 +32,6 @@ var TimeDisplay = React.createClass({
       timeBlock: {
         zIndex: "99",
         padding: "10px",
-        backgroundColor: this.props.backgroundColor,
         width: this.props.width,
         color: this.props.color,
         textAlign: "center"
