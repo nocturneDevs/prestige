@@ -5,7 +5,7 @@ var TimeDisplay = React.createClass({
 
   getInitialState: function() {
     return({
-      time: "00:00:00"
+      time: moment().format("hh:mm:ss")
     });
   },
 
