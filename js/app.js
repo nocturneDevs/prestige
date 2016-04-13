@@ -26,14 +26,14 @@ var AppBackground = React.createClass({
     image.src = 'https://source.unsplash.com/random/2880x1800';
     image.crossOrigin = 'Anonymous';
     image.onload = function() {
-      var url = this.getBase64Image(image);
-      this.cacheBackgroundImage(url);
+      var dataUrl = this.getBase64Image(image);
+      this.cacheBackgroundImage(dataUrl);
       this.setState({ backgroundUrl: this.getBase64Image(image) });
     }.bind(this);
   },
 
-  cacheBackgroundImage: function(url) {
-    localforage.setItem('prestige_background_image', url)
+  cacheBackgroundImage: function(dataUrl) {
+    localforage.setItem('prestige_background_image', dataUrl)
   },
 
   getBase64Image: function(image) {
@@ -59,7 +59,7 @@ var AppBackground = React.createClass({
       }
     }
     return (
-      React.createElement("div", {style: style.app},
+      React.createElement("div", {style: style.app}, 
         this.props.children
       )
     )
@@ -78,7 +78,7 @@ var WidgetContainer = React.createClass({
       }
     }
     return (
-      React.createElement("div", {style: style[this.props.position]},
+      React.createElement("div", {style: style[this.props.position]}, 
         this.props.children
       )
     )
@@ -89,8 +89,8 @@ var App = React.createClass({
   displayName: "App",
   render: function() {
     return (
-      React.createElement(AppBackground, null,
-        React.createElement(WidgetContainer, {position: "hero"},
+      React.createElement(AppBackground, null, 
+        React.createElement(WidgetContainer, {position: "hero"}, 
           React.createElement(TimeDisplay, null)
         )
       )
