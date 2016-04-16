@@ -1,5 +1,3 @@
-console.log("time");
-
 var TimeDisplay = React.createClass({
   displayName: "TimeDisplay",
 
@@ -38,7 +36,7 @@ var TimeDisplay = React.createClass({
       }
     };
     return (
-      React.createElement("div", {style: style.timeBlock}, 
+      React.createElement("div", {style: style.timeBlock},
         React.createElement("h1", null, " ", this.state.time, " ")
       )
     );
