@@ -1,5 +1,3 @@
-console.log("time");
-
 var TimeDisplay = React.createClass({
   displayName: "TimeDisplay",
 
@@ -18,13 +16,13 @@ var TimeDisplay = React.createClass({
 
   componentDidMount: function() {
     var that = this;
-    var blah = function() {
-      var newTime = moment().format("hh:mm:ss")
+    var updateTime = function() {
+      var newTime = moment().format("hh:mm:ss");
       that.setState({
         time: newTime
       });
     };
-    setInterval(blah, 100);
+    setInterval(updateTime, 100);
   },
 
   render: function() {
@@ -39,7 +37,7 @@ var TimeDisplay = React.createClass({
     };
     return (
       <div style={style.timeBlock}>
-        <h1> {this.state.time} </h1>
+        <h1>{this.state.time}</h1>
       </div>
     );
   }

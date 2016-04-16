@@ -17,7 +17,9 @@ var Background = React.createClass({
     this.imageCache.read(function(err, val) {
       if (!err && val) {
         this.setState({ backgroundUrl: val });
-        this.fetchImage();
+        if (this.imageCache.isStale()) {
+          this.fetchImage();
+        }
       } else {
         this.fetchImage();
       }
@@ -32,7 +34,7 @@ var Background = React.createClass({
   },
 
   cacheImage: function(image) {
-    this.imageCache.write(image);
+    this.imageCache.write(image, moment().add(1, 'minutes').toISOString());
   },
 
   render: function() {
