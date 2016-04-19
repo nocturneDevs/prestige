@@ -3,7 +3,7 @@ var Background = React.createClass({
 
   getInitialState: function() {
     return {
-      backgroundUrl: ''
+      backgroundUrl: '/images/transparent.png'
     };
   },
 
@@ -43,11 +43,12 @@ var Background = React.createClass({
         width: '100%',
         height: '100%',
         backgroundSize: 'cover',
-        backgroundColor: "black",
+        backgroundColor: 'black',
         backgroundImage: 'url(' + this.state.backgroundUrl + ')',
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transition: 'background-image 0.7s ease-in'
       }
     }
     return (
