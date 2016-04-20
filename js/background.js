@@ -8,33 +8,32 @@ var Background = React.createClass({
   },
 
   componentDidMount: function() {
-    this.imageAdapter = new Prestige.ImageAdapter();
-    this.imageCache = new Prestige.ImageCache({ key: 'prestige_image' });
     this.loadImage();
   },
 
   loadImage: function() {
-    this.imageCache.read(function(err, val) {
-      if (!err && val) {
-        this.setState({ backgroundUrl: val });
-        if (this.imageCache.isStale()) {
-          this.fetchImage();
+    var imageId = parseInt(localStorage.getItem('prestige_next_image'));
+    var imageKey = 'prestige_image_' + imageId;
+    console.log(imageKey);
+    var imageState = localStorage.getItem(imageKey);
+    if (imageState === 'ready') {
+      localforage.getItem(imageKey, function(err, image) {
+        if (err) {
+          setTimeout(function() {
+            this.loadImage();
+          }.bind(this), 2000)
+        } else {
+          localStorage.setItem('prestige_next_image', (imageId + 1)%5);
+          this.setState({backgroundUrl: image});
+          localStorage.setItem(imageKey, "used");
         }
-      } else {
-        this.fetchImage();
-      }
-    }.bind(this));
-  },
-
-  fetchImage: function() {
-    this.imageAdapter.fetch(function(image) {
-      this.cacheImage(image);
-      this.setState({ backgroundUrl: Prestige.imageToBase64Url(image) });
-    }.bind(this));
-  },
-
-  cacheImage: function(image) {
-    this.imageCache.write(image, moment().add(1, 'minutes').toISOString());
+      }.bind(this));
+    } else {
+      setTimeout(function() {
+        console.log('attempt');
+        this.loadImage();
+      }.bind(this), 2000)
+    }
   },
 
   render: function() {
