@@ -12,28 +12,15 @@ var Background = React.createClass({
   },
 
   loadImage: function() {
-    var imageId = parseInt(localStorage.getItem('prestige_next_image'));
-    var imageKey = 'prestige_image_' + imageId;
-    console.log(imageKey);
-    var imageState = localStorage.getItem(imageKey);
-    if (imageState === 'ready') {
-      localforage.getItem(imageKey, function(err, image) {
-        if (err) {
-          setTimeout(function() {
-            this.loadImage();
-          }.bind(this), 2000)
-        } else {
-          localStorage.setItem('prestige_next_image', (imageId + 1)%5);
-          this.setState({backgroundUrl: image});
-          localStorage.setItem(imageKey, "used");
-        }
-      }.bind(this));
-    } else {
-      setTimeout(function() {
-        console.log('attempt');
-        this.loadImage();
-      }.bind(this), 2000)
-    }
+    var success = function (image) {
+      this.setState({backgroundUrl: image});
+    }.bind(this);
+
+    var error = function () {
+      setTimeout(this.loadImage, 2000)
+    }.bind(this);
+
+    chrome.extension.getBackgroundPage().getImage(success, error);
   },
 
   render: function() {
