@@ -1,6 +1,12 @@
 var Background = React.createClass({
   displayName: 'Background',
 
+  getDefaultProps: function() {
+    return {
+      defaultBackgroundUrl: '/images/default.jpg'
+    }
+  },
+
   getInitialState: function() {
     return {
       backgroundUrl: '/images/transparent.png'
@@ -11,13 +17,20 @@ var Background = React.createClass({
     this.loadImage();
   },
 
-  loadImage: function() {
+  loadImage: function(attempts) {
+    attempts = attempts || 0;
     var success = function (image) {
       this.setState({backgroundUrl: image});
     }.bind(this);
 
     var error = function () {
-      setTimeout(this.loadImage, 2000)
+      attempts += 1;
+      console.log(attempts);
+      if (attempts < 5) {
+        setTimeout(function() { this.loadImage(attempts) }.bind(this), 1000);
+      } else {
+        this.setState({backgroundUrl: this.props.defaultBackgroundUrl});
+      }
     }.bind(this);
 
     chrome.extension.getBackgroundPage().getImage(success, error);
