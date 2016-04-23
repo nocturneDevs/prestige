@@ -32,7 +32,9 @@ var TimeDisplay = React.createClass({
         padding: "10px",
         width: this.props.width,
         color: this.props.color,
-        textAlign: "center"
+        textAlign: "center",
+        cursor: "default",
+        WebkitUserSelect: "none"
       }
     };
     return (
