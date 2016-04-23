@@ -1,7 +1,7 @@
 {
-  "name": "Blank new tab page",
-  "description": "Override the new tab page with a blank one",
-  "version": "0.2",
+  "name": "Prestige",
+  "description": "Decorate your new tabs with useful information and a beautiful background.",
+  "version": "0.1",
   "incognito": "split",
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "permissions": [
