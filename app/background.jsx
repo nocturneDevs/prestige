@@ -96,6 +96,16 @@ var Background = React.createClass({
         padding: "6px",
         background: "rgba(0,0,0,0.3)",
         textDecoration: "none"
+      },
+      imageAttribution: {
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        fontSize: "12px",
+        color: "white",
+        padding: "6px",
+        background: "rgba(0,0,0,0.3)",
+        textDecoration: "none"
       }
     }
     return (
@@ -105,6 +115,7 @@ var Background = React.createClass({
           {this.props.children}
         </div>
         <a style={style.author} href="http://nocturnedevs.com" target="_blank">By Nocturne</a>
+        <a style={style.imageAttribution} href="https://unsplash.com/" target="_blank">Image: Unsplash</a>
       </div>
     )
   }

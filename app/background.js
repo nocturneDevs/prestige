@@ -96,6 +96,16 @@ var Background = React.createClass({
         padding: "6px",
         background: "rgba(0,0,0,0.3)",
         textDecoration: "none"
+      },
+      imageAttribution: {
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        fontSize: "12px",
+        color: "white",
+        padding: "6px",
+        background: "rgba(0,0,0,0.3)",
+        textDecoration: "none"
       }
     }
     return (
@@ -104,7 +114,8 @@ var Background = React.createClass({
         React.createElement("div", {id: "container", style: style.container}, 
           this.props.children
         ), 
-        React.createElement("a", {style: style.author, href: "http://nocturnedevs.com", target: "_blank"}, "By Nocturne")
+        React.createElement("a", {style: style.author, href: "http://nocturnedevs.com", target: "_blank"}, "By Nocturne"), 
+        React.createElement("a", {style: style.imageAttribution, href: "https://unsplash.com/", target: "_blank"}, "Image: Unsplash")
       )
     )
   }

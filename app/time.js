@@ -32,6 +32,7 @@ var TimeDisplay = React.createClass({
         padding: "10px",
         width: this.props.width,
         color: this.props.color,
+        fontSize: "inherit",
         textAlign: "center",
         cursor: "default",
         WebkitUserSelect: "none"
@@ -39,7 +40,7 @@ var TimeDisplay = React.createClass({
     };
     return (
       React.createElement("div", {style: style.timeBlock}, 
-        React.createElement("h1", null, this.state.time)
+        React.createElement("span", null, this.state.time)
       )
     );
   }
