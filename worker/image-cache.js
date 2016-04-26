@@ -12,8 +12,11 @@ imageToBase64Url = function(image) {
 };
 
 imageFetch = function(success) {
+  var imageCategories = ["buildings", "nature", "objects", "people", "technology"];
   var image = new Image();
-  image.src = 'https://source.unsplash.com/random/2880x1800';
+  var randomCategory = imageCategories[Math.floor(Math.random() * imageCategories.length)];
+  var baseUrl = 'https://source.unsplash.com/category/'
+  image.src =  baseUrl + randomCategory + '/2880x1800';
   image.crossOrigin = 'Anonymous';
   image.onload = function() {
     success(image);
