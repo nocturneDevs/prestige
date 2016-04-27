@@ -32,7 +32,10 @@ var TimeDisplay = React.createClass({
         fontSize: "inherit",
         textAlign: "center",
         cursor: "default",
-        WebkitUserSelect: "none"
+        WebkitUserSelect: "none",
+        fontFamily: "Open Sans",
+        fontSize: "7rem",
+        backgroundImage: "radial-gradient(closest-side at 50% 50% , rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%)"
       }
     };
     return (
