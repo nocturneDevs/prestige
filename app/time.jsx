@@ -3,7 +3,7 @@ var TimeDisplay = React.createClass({
 
   getInitialState: function() {
     return({
-      time: moment().format("hh:mm:ss")
+      time: moment().format("HH:mm:ss")
     });
   },
 
@@ -15,13 +15,10 @@ var TimeDisplay = React.createClass({
   },
 
   componentDidMount: function() {
-    var that = this;
     var updateTime = function() {
-      var newTime = moment().format("hh:mm:ss");
-      that.setState({
-        time: newTime
-      });
-    };
+      var newTime = moment().format("HH:mm:ss");
+      this.setState({time: newTime});
+    }.bind(this);
     setInterval(updateTime, 100);
   },
 
