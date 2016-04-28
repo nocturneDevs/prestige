@@ -17,10 +17,10 @@ var App = React.createClass({
           <TimeDisplay />
         </WidgetContainer>
         <WidgetContainer position="bottomRight">
-          <a style={style.link} href="http://nocturnedevs.com" target="_blank">Built by Nocturne</a>
+          <Link href="http://nocturnedevs.com" text="Built by Nocturne" />
         </WidgetContainer>
         <WidgetContainer position="bottomLeft">
-          <a style={style.link} href="https://unsplash.com/" target="_blank">Image: Unsplash</a>
+          <Link href="https://unsplash.com/" text="Image: Unsplash" />
         </WidgetContainer>
       </Background>
     );

@@ -17,10 +17,10 @@ var App = React.createClass({
           React.createElement(TimeDisplay, null)
         ), 
         React.createElement(WidgetContainer, {position: "bottomRight"}, 
-          React.createElement("a", {style: style.link, href: "http://nocturnedevs.com", target: "_blank"}, "Built by Nocturne")
+          React.createElement(Link, {href: "http://nocturnedevs.com", text: "Built by Nocturne"})
         ), 
         React.createElement(WidgetContainer, {position: "bottomLeft"}, 
-          React.createElement("a", {style: style.link, href: "https://unsplash.com/", target: "_blank"}, "Image: Unsplash")
+          React.createElement(Link, {href: "https://unsplash.com/", text: "Image: Unsplash"})
         )
       )
     );
