@@ -35,7 +35,8 @@ var TimeDisplay = React.createClass({
         WebkitUserSelect: "none",
         fontFamily: "Open Sans",
         fontSize: "7rem",
-        backgroundImage: "radial-gradient(closest-side at 50% 50% , rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%)"
+        backgroundImage: "radial-gradient(closest-side at 50% 50% , rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%)",
+        WebkitAnimation: "fadein 2s"
       }
     };
     return (
