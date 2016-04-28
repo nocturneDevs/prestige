@@ -23,25 +23,28 @@ var TimeDisplay = React.createClass({
     setInterval(updateTime, 100);
   },
 
-  render: function() {
-    var style = {
-      timeBlock: {
-        zIndex: "99",
-        padding: "10px",
-        width: this.props.width,
-        color: this.props.color,
-        fontSize: "inherit",
-        textAlign: "center",
-        cursor: "default",
-        WebkitUserSelect: "none",
-        fontFamily: "Open Sans",
-        fontSize: "7rem",
-        backgroundImage: "radial-gradient(closest-side at 50% 50% , rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%)",
-        WebkitAnimation: "fadein 2s"
-      }
+  style: function() {
+    this._style = this._style || {
+      zIndex: "99",
+      padding: "10px",
+      width: this.props.width,
+      color: this.props.color,
+      fontSize: "inherit",
+      textAlign: "center",
+      cursor: "default",
+      WebkitUserSelect: "none",
+      fontFamily: "Roboto Condensed",
+      fontSize: "7rem",
+      backgroundImage: "radial-gradient(closest-side at 50% 50% , rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%)",
+      WebkitAnimation: "fadein 2s"
     };
+
+    return this._style;
+  },
+
+  render: function() {
     return (
-      React.createElement("div", {style: style.timeBlock}, 
+      React.createElement("div", {style: this.style()}, 
         React.createElement("span", null, this.state.time)
       )
     );
