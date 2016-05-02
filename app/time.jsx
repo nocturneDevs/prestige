@@ -23,8 +23,8 @@ var TimeDisplay = React.createClass({
     setInterval(updateTime, 100);
   },
 
-  style: function() {
-    this._style = this._style || {
+  render: function() {
+    var style = {
       zIndex: "99",
       padding: "10px",
       width: this.props.width,
@@ -33,18 +33,13 @@ var TimeDisplay = React.createClass({
       textAlign: "center",
       cursor: "default",
       WebkitUserSelect: "none",
-      fontFamily: "Roboto Condensed",
+      fontFamily: "Helvetica, sans-serif",
       fontSize: "7rem",
       backgroundImage: "radial-gradient(closest-side at 50% 50% , rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%)",
       WebkitAnimation: "fadein 2s"
     };
-
-    return this._style;
-  },
-
-  render: function() {
     return (
-      <div style={this.style()}>
+      <div style={style}>
         <span>{this.state.time}</span>
       </div>
     );

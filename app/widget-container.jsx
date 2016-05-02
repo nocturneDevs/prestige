@@ -1,8 +1,8 @@
 var WidgetContainer = React.createClass({
   displayName: "WidgetContainer",
 
-  style: function(position) {
-    this._styles = this._style || {
+  render: function() {
+    var style = {
       topLeft: {
         padding: "5px",
         width: "200px",
@@ -43,13 +43,8 @@ var WidgetContainer = React.createClass({
         textAlign: "right"
       }
     };
-
-    return this._styles[this.props.position];
-  },
-
-  render: function() {
     return (
-      <div style={this.style()}>
+      <div style={style[this.props.position]}>
         {this.props.children}
       </div>
     )

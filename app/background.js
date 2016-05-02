@@ -56,9 +56,8 @@ var Background = React.createClass({
     }.bind(this), 50);
   },
 
-  style: function(element) {
-    // Don't cache since state is injected
-    this._styles = {
+  render: function() {
+    var style = {
       app: {
         position: "relative",
         width: "100%",
@@ -89,15 +88,10 @@ var Background = React.createClass({
         justifyContent: "center",
       }
     };
-
-    return this._styles[element];
-  },
-
-  render: function() {
     return (
-      React.createElement("div", {style: this.style('app')}, 
-        React.createElement("div", {id: "mask", style: this.style('mask')}), 
-        React.createElement("div", {id: "container", style: this.style('container')}, 
+      React.createElement("div", {style: style.app}, 
+        React.createElement("div", {id: "mask", style: style.mask}), 
+        React.createElement("div", {id: "container", style: style.container}, 
           this.props.children
         )
       )
