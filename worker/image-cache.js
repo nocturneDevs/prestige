@@ -11,14 +11,10 @@ imageToBase64Url = function(image) {
   return canvas.toDataURL("image/png");
 };
 
-imageFetch = function(resolutionIndex, photoID, success) {
-  resolutionIndex = parseInt(resolutionIndex) || 0;
+imageFetch = function(resolutionIndex, success) {
   var image = new Image();
-  var imageResolution = ['1920x1080', '1920x1090', '1920x1100', '1920x1110', '1920x1120']
-  var baseUrl = 'https://source.unsplash.com/collection/220267/'
-  if (photoID) {
-    baseUrl = 'https://source.unsplash.com/' + photoID + '/'
-  }
+  var imageResolution = ['1920x1080', '1920x1090', '1920x1100', '1920x1110', '1920x1120'];
+  var baseUrl = 'https://source.unsplash.com/collection/220267/';
   image.src =  baseUrl + imageResolution[resolutionIndex];
   image.crossOrigin = 'Anonymous';
   image.onload = function() {
@@ -26,10 +22,10 @@ imageFetch = function(resolutionIndex, photoID, success) {
   };
 };
 
-updateImage = function(key, resolutionIndex, photoID) {
+updateImage = function(key, resolutionIndex) {
   console.log('Updating ' + key);
   localStorage.setItem(key, moment().toISOString());
-  imageFetch(resolutionIndex, photoID, function (image) {
+  imageFetch(resolutionIndex, function (image) {
     var dataUrl = imageToBase64Url(image);
     localforage.setItem(key, dataUrl, function() {
       localStorage.setItem(key, 'ready');
