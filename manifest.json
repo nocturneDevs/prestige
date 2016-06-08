@@ -11,7 +11,7 @@
     "newtab": "index.html"
   },
   "background": {
-    "scripts": ["resources/moment.js","resources/localforage.min.js", "worker/image-cache.js"]
+    "scripts": ["resources/moment.js","resources/localForage.min.js", "worker/image-cache.js"]
   },
   "manifest_version": 2
 }
